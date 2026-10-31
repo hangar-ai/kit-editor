@@ -1,0 +1,11 @@
+{
+  "description": "Opens a .env or a config file in a tab for you to fill in or check, so that an agent that needs a secret goes on without ever seeing it.",
+  "topics": [
+    "hangar-kit",
+    "hangar",
+    "claude-code",
+    "env",
+    "secrets",
+    "config"
+  ]
+}
