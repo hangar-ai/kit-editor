@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "id": "editor",
   "name": "Editor",
   "version": "0.1.0",
@@ -7,7 +7,7 @@
   "author": "Hangar",
   "homepage": "https://github.com/hangar-ai/kit-editor",
   "icon": "icon.svg",
-  "hangar": ">=1.9.0",
+  "hangar": ">=2.0.0",
   "gallery": {
     "permissionsSummary": "Reads and changes text files of the workspace, .env and other hidden files included, and tells the agent that asked which keys were set, never their values.",
     "tags": ["env", "secrets", "config", "tab"]
@@ -16,8 +16,7 @@
     {
       "id": "editor",
       "title": "Editor",
-      "entry": "tabs/editor/index.html",
-      "native": "tabs/editor.wasm",
+      "entry": "tabs/editor.wasm",
       "icon": "icon.svg",
       "permissions": ["files.read", "files.write", "panes.send"],
       "params": {

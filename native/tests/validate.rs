@@ -1,6 +1,6 @@
 //! JSON's answer is the grammar's. YAML is scanned and TOML parsed for what is
 //! certainly wrong, so the first thing checked is that valid files, full of
-//! traps, pass. test/validate.test.js, ported.
+//! traps, pass. the HTML tab's Node test of the same name, ported before the page was deleted.
 
 use std::path::Path;
 

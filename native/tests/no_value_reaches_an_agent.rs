@@ -2,7 +2,7 @@
 //! types, however the save goes, no value reaches `panes.send`, any other call
 //! but the file's own, or the tab's log. Every test drives the tab through its
 //! page against a fake Hangar, marks every value with a sentinel, and looks at
-//! what left the tab. test/no-value-reaches-an-agent.test.js, ported.
+//! what left the tab. the HTML tab's Node test of the same name, ported before the page was deleted.
 
 mod common;
 

@@ -1,4 +1,4 @@
-//! test/diff.test.js, ported.
+//! the HTML tab's Node test of the same name, ported before the page was deleted.
 
 use std::time::Instant;
 

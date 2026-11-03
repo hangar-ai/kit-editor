@@ -1,6 +1,6 @@
 //! Git's rules, and git itself as the judge: the table below is run through
 //! `git check-ignore` in a temporary repository when git is on the machine.
-//! test/gitignore.test.js, ported.
+//! the HTML tab's Node test of the same name, ported before the page was deleted.
 
 use std::path::PathBuf;
 use std::process::Command;

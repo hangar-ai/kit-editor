@@ -1,6 +1,6 @@
 //! What the page draws for each state: values dotted until revealed, text
 //! never read as markup, both languages, one primary action.
-//! test/view.test.js, ported.
+//! the HTML tab's Node test of the same name, ported before the page was deleted.
 
 mod common;
 

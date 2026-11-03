@@ -17,20 +17,20 @@ fn manifest() -> Value {
 }
 
 #[test]
-fn the_tab_keeps_its_page_and_names_its_module() {
+fn the_tab_is_native_under_schema_2() {
     let manifest = manifest();
     assert_eq!(
-        manifest["schema"], 1,
-        "so that the kit still opens on Hangar 1.x"
+        manifest["schema"], 2,
+        "an entry that is a module needs schema 2"
     );
-    assert_eq!(manifest["hangar"], ">=1.9.0");
+    assert_eq!(manifest["hangar"], ">=2.0.0");
     let tab = &manifest["tabs"][0];
-    assert_eq!(tab["entry"], "tabs/editor/index.html");
+    assert_eq!(tab["entry"], "tabs/editor.wasm");
+    assert!(tab.get("native").is_none(), "the entry is the module itself");
     assert!(
-        kit().join("tabs/editor/index.html").is_file(),
-        "the page stays"
+        !kit().join("tabs/editor").exists(),
+        "no HTML page is left"
     );
-    assert_eq!(tab["native"], "tabs/editor.wasm");
     let mut permissions: Vec<&str> = tab["permissions"]
         .as_array()
         .unwrap()
@@ -41,7 +41,7 @@ fn the_tab_keeps_its_page_and_names_its_module() {
     assert_eq!(
         permissions,
         common::GRANTED,
-        "the page's three, which the tests' Hangar holds the tab to"
+        "the tab's three, which the tests' Hangar holds the tab to"
     );
 }
 

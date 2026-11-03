@@ -1,6 +1,6 @@
 //! Comments, order and every untouched byte survive a save; a value is a
 //! value, even over several lines, and is never read as a key.
-//! test/dotenv.test.js, ported.
+//! the HTML tab's Node test of the same name, ported before the page was deleted.
 
 use kit_editor_tab::dotenv;
 
