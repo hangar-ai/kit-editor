@@ -1,0 +1,29 @@
+[package]
+name = "kit-editor-tab"
+description = "The Editor kit's tab, native: Rust built to WebAssembly"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+# The cdylib is the module Hangar loads (tabs/editor.wasm, built by
+# scripts/build-native.sh); the rlib is for `cargo test`, which runs the tab on
+# the host with hangar_kit_sdk::testing.
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Until a release tag of Hangar holds the SDK, its branch; Cargo.lock pins the commit.
+hangar-kit-sdk = { git = "https://github.com/hangar-ai/hangar", branch = "feat/native-rust" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"
+
+[dev-dependencies]
+regex = "1"
