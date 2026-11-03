@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   kit-check:
-    uses: hangar-ai/.github/.github/workflows/kit-check.yml@v1
+    uses: hangar-ai/.github/.github/workflows/kit-check.yml@rust-rewrite
 
   # The native tab: its tests, and the committed module checked against the
   # source. Rust comes from native/rust-toolchain.toml, which rustup installs
@@ -23,11 +23,5 @@ jobs:
       - name: Tests
         working-directory: native
         run: cargo test --locked
-      - name: Build the module
-        run: scripts/build-native.sh
       - name: The committed module is the one the source makes
-        run: |
-          if ! git diff --quiet -- tabs/editor.wasm; then
-            echo "::error file=tabs/editor.wasm::tabs/editor.wasm is stale: run scripts/build-native.sh and commit it"
-            exit 1
-          fi
+        run: scripts/build-native.sh --check
