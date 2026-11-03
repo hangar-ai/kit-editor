@@ -17,6 +17,7 @@
       "id": "editor",
       "title": "Editor",
       "entry": "tabs/editor/index.html",
+      "native": "tabs/editor.wasm",
       "icon": "icon.svg",
       "permissions": ["files.read", "files.write", "panes.send"],
       "params": {

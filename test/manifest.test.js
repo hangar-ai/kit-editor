@@ -58,6 +58,19 @@ test("the tab: three permissions and nothing more, one tab per set of params", (
   assert.notEqual(tab.singleton, true, "one tab per file: another file is another tab");
 });
 
+test("the native module: a .wasm inside the kit, beside the page that Hangar 1.x opens", () => {
+  const [tab] = manifest.tabs;
+  assert.equal(manifest.schema, 1, "schema 1, so that the kit still opens on Hangar 1.x");
+  safePath(tab.entry, [".html"], "entry");
+  safePath(tab.native, [".wasm"], "native");
+  assert.equal(tab.native, "tabs/editor.wasm");
+  const module = fs.readFileSync(path.join(KIT, tab.native));
+  assert.deepEqual([...module.subarray(0, 4)], [0x00, 0x61, 0x73, 0x6d], "a WebAssembly module");
+  assert.ok(fs.existsSync(path.join(KIT, "native", "Cargo.toml")), "built from native/");
+  assert.ok(fs.existsSync(path.join(KIT, "native", "Cargo.lock")), "its versions pinned");
+  assert.ok(fs.existsSync(path.join(KIT, "scripts", "build-native.sh")), "by scripts/build-native.sh");
+});
+
 test("the params: what is declared, what each rule lets through", () => {
   const { params } = manifest.tabs[0];
   assert.deepEqual(Object.keys(params).sort(), ["keys", "line", "path", "why"]);
@@ -134,7 +147,7 @@ test("nothing personal, nothing outside its folder is named", () => {
   const files = [];
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if ([".git", ".hangar-ui", "node_modules"].includes(entry.name)) continue;
+      if ([".git", ".hangar-ui", "node_modules", "target"].includes(entry.name)) continue;
       if (entry.isDirectory()) walk(path.join(dir, entry.name));
       else files.push(path.join(dir, entry.name));
     }
