@@ -1,7 +1,7 @@
-//! The Editor kit's tab, native: what tabs/editor/ does in a page, in Rust,
-//! drawn by Hangar with its own widgets. Built to WebAssembly by
-//! scripts/build-native.sh into tabs/editor.wasm, which the manifest's
-//! `native` names; Hangar 1.x opens the page as before.
+//! The Editor kit's tab, native: written in Rust, drawn by Hangar with its
+//! own widgets, no page. Built to WebAssembly by scripts/build-native.sh
+//! into tabs/editor.wasm, which the manifest's tab `entry` names (schema 2,
+//! Hangar 2.0 or later).
 //!
 //! The parts are the page's, each ported from its file: `dotenv` (reading a
 //! dotenv file and writing back only what changed), `answer` (the only
