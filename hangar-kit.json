@@ -2,7 +2,7 @@
   "schema": 2,
   "id": "editor",
   "name": "Editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Opens a .env or a config file in a tab for you to fill in or check, so that an agent that needs a secret goes on without ever seeing it.",
   "author": "Hangar",
   "homepage": "https://github.com/hangar-ai/kit-editor",
